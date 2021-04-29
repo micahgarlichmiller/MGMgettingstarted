@@ -1,11 +1,6 @@
 # MGMgettingstarted
 
-### On neukum or some host with local home.
-###   Setup your local config with the values used in your github account
-###   This gets stored in ~/.gitconfig
-git config --global user.name "micahgarlichmiller"
-git config --global user.email "micahgarlichmiller@gmail.com"
-git config --global push.default simple
+*** On neukum or some host with local home setup your local config with the values used in your github account.  This info gets stored in ~/.gitconfig ***
 
 
 ### figure out where you want to manage your git repos from.  I use ~/git
