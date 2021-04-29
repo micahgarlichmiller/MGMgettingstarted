@@ -3,6 +3,8 @@
 #   This gets stored in ~/.gitconfig
 git config --global user.name "micahgarlichmiller"
 git config --global user.email "micahgarlichmiller@gmail.com"
+git config --global push.default simple
+
 
 # figure out where you want to manage your git repos from.  I use ~/git
 mkdir git
