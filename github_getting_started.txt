@@ -38,3 +38,11 @@ git status
 git add MGMgettingstartedwithgithub.txt
 git commit -m "Added getting started instructions"
 git push
+
+# I am not sure if this will work but I am adding alias to handle restoring
+# file permissions:
+git config --global --add alias.permission-reset '!git diff -p -R --no-ext-diff --no-color | grep -E "^(diff|(old|new) mode)" --color=never | git apply'
+
+
+# useful resources:
+https://www.howtoforge.com/tutorial/install-git-and-github-on-ubuntu/
