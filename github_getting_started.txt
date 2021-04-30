@@ -50,6 +50,43 @@ git config --global --add alias.permission-reset '!git diff -p -R --no-ext-diff 
 # and I also put the current date in the name... this is useful for aging
 # keys out.
 ssh-keygen   # and follow prompts
+# then you take your new public key and add it to the github site
+# Settings -> SSH and GPG keys -> New SSH key
+# then test:
+ssh -i ~/.ssh/id_rsa-temp-github-20210429 -T git@github.com
+
+# then I setup a deploy key.  A deploy key is handy because it provides access
+# to a single repo in a read only fashion by default.  (name it something good)
+ssh-keygen # and follow prompts
+# Add it as a deploy key to the repo in question
+# Go to repo -> Settings -> Deploy Key -> add key (add the pubkey from prev)
+# Ref: https://docs.github.com/en/developers/overview/managing-deploy-keys
+# then test, eg
+ssh -i ~/.ssh/dep_key_github_MGMgettingstarted_20210430 -T git@github.com
+
+# switch over from using https to using ssh for github.  Go to project,
+# select clone/download key, copy the ssh key and then use it as shown below
+[epmgarlich@neukum MGMgettingstarted]$ git remote -v   #DISPLAY STATE BEFORE
+origin	https://github.com/micahgarlichmiller/MGMgettingstarted.git (fetch)
+origin	https://github.com/micahgarlichmiller/MGMgettingstarted.git (push)
+[epmgarlich@neukum MGMgettingstarted]$ git remote set-url origin git@github.com:micahgarlichmiller/MGMgettingstarted.git
+[epmgarlich@neukum MGMgettingstarted]$ git remote -v   #DISPLAY STATE AFTER
+origin	git@github.com:micahgarlichmiller/MGMgettingstarted.git (fetch)
+origin	git@github.com:micahgarlichmiller/MGMgettingstarted.git (push)
+
+# note: the above deploy doc includes info for using multiple deploy keys by 
+#       modifying ~/.ssh/config
+# I am going to setup an alias for my own use 
+[epmgarlich@neukum MGMgettingstarted]$ cat ~/.ssh/config
+Host github.com-mygithubkey
+        Hostname github.com
+        IdentityFile=/home/uadmin/epmgarlich/.ssh/id_rsa-temp-github-20210429
+[epmgarlich@neukum MGMgettingstarted]$
+
+# so now I am going to reset the remote to use this alias like so:
+git remote set-url origin git@github.com-mygithubkey:micahgarlichmiller/MGMgettingstarted.git
+
+
 
 # useful resources:
 https://www.howtoforge.com/tutorial/install-git-and-github-on-ubuntu/
