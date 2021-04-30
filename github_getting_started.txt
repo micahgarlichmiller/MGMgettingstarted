@@ -43,6 +43,13 @@ git push
 # file permissions:
 git config --global --add alias.permission-reset '!git diff -p -R --no-ext-diff --no-color | grep -E "^(diff|(old|new) mode)" --color=never | git apply'
 
+# I dont want to have to type a passwd each time so I created an ssh key
+# and associated it with my github account.  To do this just type ssh-keygen
+# and follow the prompts... the only thing that I did special was to give this
+# keypair a name indicating that I would be using it for my github account
+# and I also put the current date in the name... this is useful for aging
+# keys out.
+ssh-keygen   # and follow prompts
 
 # useful resources:
 https://www.howtoforge.com/tutorial/install-git-and-github-on-ubuntu/
