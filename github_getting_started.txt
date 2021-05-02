@@ -86,7 +86,13 @@ Host github.com-mygithubkey
 # so now I am going to reset the remote to use this alias like so:
 git remote set-url origin git@github.com-mygithubkey:micahgarlichmiller/MGMgettingstarted.git
 
+# and now... I can do a git push without providing my passwd.
 
+
+# a useful command for switching your primary group before running a
+# command: 
+sg $group -c '$cmd'
+q!
 
 # useful resources:
 https://www.howtoforge.com/tutorial/install-git-and-github-on-ubuntu/
