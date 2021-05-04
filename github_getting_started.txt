@@ -4,6 +4,7 @@
 git config --global user.name "micahgarlichmiller"
 git config --global user.email "micahgarlichmiller@gmail.com"
 git config --global push.default simple
+git config --global --add alias.permission-reset '!git diff -p -R --no-ext-diff --no-color | grep -E "^(diff|(old|new) mode)" --color=never | git apply'
 
 
 # figure out where you want to manage your git repos from.  I use ~/git
