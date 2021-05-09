@@ -1,0 +1,40 @@
+20210509 - Created a linked-clone of c8 called c8ansible
+
+SETUP
+  The community ansible repo is already installed.
+  (Do yum list all |grep ansible and you will find the repo bits... if you
+   install those you will be able to pull from the community ansible repo
+   however, be aware, epel has many of those and even newer)
+
+  git is installed and git ssh keys are setup, and github is setup with this
+  pubkey.
+
+WHAT IS IT THAT I WISH TO DO:
+  1) Hello world...build a playbook that sets the motd
+  2) Find out if there are any libraries of cool ansible hardening bits for
+     RHEL distros.
+
+HELLO WORLD
+  Get ansible to edit the contents of /etc/motd.  (empty file on fresh install)
+  But first we are going to learn some syntax running as mgarlich (not root)
+
+  cd ~/git/MGMgettingstarted
+  mkdir ansible
+  cd ansible
+  mkdir playbooks
+  cd playbooks
+  vi HelloWorld.yml
+  # REF: https://codingbee.net/ansible/ansible-a-hello-world-playbook
+  cat HelloWorld.yml
+---
+- name: This is a hello-world example
+  hosts: localhost
+  tasks:
+    - name: Create '/tmp/testfile.txt' with content 'hello world'.
+      copy:
+        content: hello world
+        dest: /tmp/testfile.txt
+# end of hello world
+# now run it
+  ansible-playbook ./HelloWorld.yml
+
