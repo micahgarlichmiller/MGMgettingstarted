@@ -38,3 +38,34 @@ HELLO WORLD
 # now run it
   ansible-playbook ./HelloWorld.yml
 
+#### push changes up into git
+git status
+git add ansible c8ansible.txt
+git commit -m "adding ansible notes and tree"
+git push
+
+# A helpful command to list hosts: ansible all --list-hosts
+# since I dont have any hosts setup, I just used "localhost" in the playbook
+
+# now we want to push a file rather than build the content
+cd /home/mgarlich/git/MGMgettingstarted/ansible
+mkdir files
+cd files
+echo "Hello World - copyfile example" > testfile.txt
+# now modify the playbook to use this copyfile source
+cd ../playbooks
+# edit HelloWorld.yml to look like this:
+--
+- name: This is a hello-world example
+  hosts: localhost
+  tasks:
+    - name: Create '/tmp/testfile.txt' with content 'hello world'.
+      copy:
+        src: ./files/testfile.txt
+        dest: /tmp/testfile.txt
+##
+
+# before I go further I want to use vim-ansible which I installed
+vi ~/.vimrc
+#add: au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+
