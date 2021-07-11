@@ -97,3 +97,9 @@ q!
 
 # useful resources:
 https://www.howtoforge.com/tutorial/install-git-and-github-on-ubuntu/
+
+# an example of cloning a useful repo from github
+cd ~/git
+git clone git@github.com:ansible/ansible-examples.git
+cd ansible-examples/
+ls
