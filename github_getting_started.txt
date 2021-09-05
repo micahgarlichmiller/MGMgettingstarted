@@ -51,6 +51,8 @@ git config --global --add alias.permission-reset '!git diff -p -R --no-ext-diff 
 # and I also put the current date in the name... this is useful for aging
 # keys out.
 ssh-keygen   # and follow prompts
+# or
+# ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_mgmws_github -C "mgmgws-github-20210905"
 # then you take your new public key and add it to the github site
 # Settings -> SSH and GPG keys -> New SSH key
 # then test:
